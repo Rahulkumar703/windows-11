@@ -7,8 +7,8 @@ import React from "react";
 const NotFound = () => {
   const router = useRouter();
   return (
-    <div className="bg-transparent backdrop-blur w-full h-full flex items-center justify-center">
-      <div className="text-white md:w-3/5 md:h-3/5 w-full h-full p-4 border-border border bg-[#0074d0]/80 backdrop-blur rounded-xl flex flex-col shadow-xl">
+    <div suppressHydrationWarning className="fixed top-0 bg-transparent backdrop-blur w-full h-[calc(100vh-56px)] flex items-center justify-center">
+      <div className="text-white md:w-3/5 md:h-3/5 w-full h-full p-4 border-border border bg-[#0074d0]/80 backdrop-blur md:rounded-xl flex flex-col shadow-xl">
         <div className="flex flex-col">
           <span className="text-6xl font-mono mb-8">:&#40;</span>
           <h1 className="text-xl font-semibold font-mono mb-4">
@@ -28,15 +28,14 @@ const NotFound = () => {
           </p>
         </div>
         <div className="mt-auto flex items-center justify-between">
-          <Button variant="ghost" size={"sm"} onClick={() => router.back()}>
-            <ChevronLeft /> Back
+          <Button variant="outline" onClick={() => router.back()}>
+            <ChevronLeft className={'-mt-[1px]'}/> Back
           </Button>
           <Button
-            variant="ghost"
-            size={"icon"}
+            variant="default"
             onClick={() => router.refresh()}
           >
-            <RotateCw />
+            <RotateCw className={'-mt-[1px]'}/> Reload
           </Button>
         </div>
       </div>
