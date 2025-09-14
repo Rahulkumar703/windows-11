@@ -4,24 +4,14 @@ const nextConfig: NextConfig = {
     images: {
         qualities: [25, 50, 75, 100],
     },
-    turbopack: {
-        rules: {
-            "*.svg": {
-                loaders: ["@svgr/webpack"],
-                as: "*.js",
-            },
-        },
-    },
-    webpack: (config) => {
-        // Add rule for SVG files
+    webpack(config) {
         config.module.rules.push({
             test: /\.svg$/,
-            use: ["@svgr/webpack", "url-loader"],
+            issuer: /\.[jt]sx?$/,
+            use: ['@svgr/webpack'],
         });
-
         return config;
     },
-    reactStrictMode: true,
 };
 
 export default nextConfig;
